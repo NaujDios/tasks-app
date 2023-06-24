@@ -1,0 +1,40 @@
+
+      <% if (tasks.length === 0) { %>
+        <div class="h-100 d-flex align-items-center justify-content-center">
+          <div class="text-center text-white">
+            <h1>No tasks</h1>
+            <img src="https://cdn-icons-png.flaticon.com/512/15/15457.png" alt="Not Found" class="w-75">
+          </div>
+        </div>
+        <%  } else{ %>
+          <table class="table table-bordered table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>N.</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+
+        <%  for (let i = 0; i <tasks.length; i++){ %>
+            <tr>
+              <td><%= i %></td>
+              <td><%= tasks[i].title %></td>
+              <td><%= tasks[i].description %></td>
+              <td>
+                <% if (tasks[i].done) { %>
+                <a class="btn btn-dark" href="/toggleDone/<%=tasks[i].id%>">Undone</a>
+                <% } else { %>
+                <a class="btn btn-success" href="/toggleDone/<%=tasks[i].id%>">Done</a>
+                <% } %>
+                <a class="btn btn-danger" href="/delete/<%=tasks[i].id%>">Delete</a>
+                <a class="btn btn-info" href="/edit/<%=tasks[i].id%>">Update</a>
+              </td>
+            </tr>
+          <% }} %>
+           
+        
+    </tbody>
+</table>
